@@ -1,0 +1,25 @@
+{
+  "name": "db",
+  "version": "1.0.0",
+  "description": "Backend for Barangay Emergency System",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PipoCleofas/backendExpress.git"
+  },
+  "author": "Nerds Studio",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PipoCleofas/backendExpress/issues"
+  },
+  "homepage": "https://github.com/PipoCleofas/backendExpress#readme",
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "express": "^4.21.1",
+    "mysql2": "^3.11.4"
+  }
+}
