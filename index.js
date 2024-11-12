@@ -11,11 +11,11 @@ app.use(cors());
 
 
 const connection = mysql.createConnection({
-  host: 'localhost',
-  port: '3306',
+  host: 'autorack.proxy.rlwy.net',
+  port: '23462',
   user: 'root',
-  password: 'Jacob17_jacob',
-  database: 'rescuelink'
+  password: 'ZTBHzKThevbixIklSxROvhKdgFLUXZsx',
+  database: 'railway'
 });
 
 connection.connect((err) => {
