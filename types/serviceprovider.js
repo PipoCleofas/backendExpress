@@ -26,7 +26,7 @@ function validateUserData(req, res, next) {
 router.get('/getServiceProvider', (req, res) => {
   const { username, password } = req.query;
 
-  const verify = `SELECT * FROM serviceproviderrrr WHERE username = ? AND password = ?`;
+  const verify = `SELECT * FROM ServiceProviderrrr WHERE username = ? AND password = ?`;
   connection.query(verify, [username, password], (error, results) => {
       if (error) {
           console.error('Database query error:', error.message);

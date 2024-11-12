@@ -27,7 +27,7 @@ function validateUserData(req, res, next) {
 router.post('/submit', validateUserData, (req, res) => {
   const { lname, fname, mname, password, birthday, address } = req.body;
 
-  const query = `INSERT INTO user (LastName, FirstName, MiddleName, Password, Birthday, Address) 
+  const query = `INSERT INTO User (LastName, FirstName, MiddleName, Password, Birthday, Address) 
                  VALUES (?, ?, ?, ?, ?, ?)`;
 
   connection.query(query, [lname, fname, mname, password, birthday, address], (error, results) => {
@@ -47,7 +47,7 @@ router.post('/submit', validateUserData, (req, res) => {
 router.get('/getUser', (req, res) => {
   const { username, password } = req.query;
 
-  const verify = `SELECT * FROM user WHERE Username = ? AND Password = ? AND Status = "approved" `;
+  const verify = `SELECT * FROM User WHERE Username = ? AND Password = ? AND Status = "approved" `;
 
   connection.query(verify, [username, password], (error, results) => {
     if (error) {
@@ -72,7 +72,7 @@ router.get('/getUser', (req, res) => {
 });
 
 router.get('/getUserList', (req, res) => {
-  const verify = 'SELECT * FROM user WHERE Status = "pending"';
+  const verify = 'SELECT * FROM User WHERE Status = "pending"';
 
   connection.query(verify, (error, results) => {
     if (error) {
@@ -95,7 +95,7 @@ router.put('/updateUserStatus/:newStatus', (req, res) => {
     return res.status(400).send('Id is required');
   }
 
-  const query = `UPDATE user SET status = ? WHERE UserID = ?`;
+  const query = `UPDATE User SET status = ? WHERE UserID = ?`;
   const values = [newStatus, id]; 
 
   connection.query(query, values, (error, results) => {
@@ -123,7 +123,7 @@ router.put('/updateUser/:newUsername', (req, res) => {
     return res.status(400).send('First name, last name, and middle name are required to identify the user');
   }
 
-  const query = `UPDATE user SET username = ? WHERE FirstName = ? AND LastName = ? AND MiddleName = ?`;
+  const query = `UPDATE User SET username = ? WHERE FirstName = ? AND LastName = ? AND MiddleName = ?`;
   const values = [newUsername, fname, lname, mname]; 
 
   connection.query(query, values, (error, results) => {
@@ -152,7 +152,7 @@ router.put('/updateStatusUser/:status', (req, res) => {
     return res.status(400).send('UserID is required');
   }
 
-  const query = 'UPDATE user SET Status = ? WHERE UserID = ?';
+  const query = 'UPDATE User SET Status = ? WHERE UserID = ?';
   const values = [status, UserID]; 
 
   connection.query(query, values, (error, results) => {

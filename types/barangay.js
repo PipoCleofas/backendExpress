@@ -24,7 +24,7 @@ function validateUserData(req, res, next) {
 router.post('/getBarangays', validateUserData, (req, res) => {
   const { barangayname, sitio } = req.body;
 
-  const query = 'INSERT INTO barangay (BarangayName, Sitio) VALUES (?, ?)';
+  const query = 'INSERT INTO Barangay (BarangayName, Sitio) VALUES (?, ?)';
 
   connection.query(query, [barangayname, sitio], (error, results) => {
     if (error) {
@@ -38,7 +38,7 @@ router.post('/getBarangays', validateUserData, (req, res) => {
 router.get('/getBarangay', (req, res) => {
   const { username, password } = req.query;
 
-  const verify = `SELECT * FROM barangay WHERE BarangayName = ? AND Password = ?`;
+  const verify = `SELECT * FROM Barangay WHERE BarangayName = ? AND Password = ?`;
 
   connection.query(verify, [username, password], (error, results) => {
     if (error) {

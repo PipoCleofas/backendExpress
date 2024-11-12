@@ -23,7 +23,7 @@ router.post('/submit', validateUserData, (req, res) => {
       return res.status(500).send('No database connection');
     }
   
-    const query = 'INSERT INTO messaging (message) VALUES (?)';
+    const query = 'INSERT INTO Messaging (message) VALUES (?)';
   
     connection.query(query, [message], (error, results) => {
       if (error) {
@@ -41,7 +41,7 @@ router.post('/submit', validateUserData, (req, res) => {
         return res.status(400).send('Message ID is required');
     }
 
-    const query = `UPDATE messaging SET status = ? WHERE id = ?`;
+    const query = `UPDATE Messaging SET status = ? WHERE id = ?`;
     const values = [status || 'processed', id]; 
 
     connection.query(query, values, (error, results) => {
@@ -60,7 +60,7 @@ router.post('/submit', validateUserData, (req, res) => {
 
 
 router.get('/getMessage', (req, res) => {
-  const query = 'SELECT * FROM messaging';
+  const query = 'SELECT * FROM Messaging';
 
   connection.query(query, (error, results) => {
       if (error) {

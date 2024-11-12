@@ -26,7 +26,7 @@ function validateUserData(req, res, next) {
 router.get('/getAdmin', (req, res) => {
   const { username, password } = req.query; 
 
-  const verify = `SELECT * FROM admin WHERE Username = ? AND Password = ?`;
+  const verify = `SELECT * FROM Admin WHERE Username = ? AND Password = ?`;
 
   connection.query(verify, [username, password], (error, results) => {
     if (error) {

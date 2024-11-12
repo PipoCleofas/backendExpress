@@ -28,7 +28,7 @@ function validateUserData(req, res, next) {
 router.post('/submit', validateUserData, (req, res) => {
   const { requestid, description, status, barangayid } = req.body;
 
-  const query = 'INSERT INTO assistancereport (RequestID, Description, Status, BarangayID) VALUES (?, ?, ?, ?)';
+  const query = 'INSERT INTO AssistanceReport (RequestID, Description, Status, BarangayID) VALUES (?, ?, ?, ?)';
 
   connection.query(query, [requestid, description, status, barangayid], (error, results) => {
     if (error) {
@@ -42,7 +42,7 @@ router.post('/submit', validateUserData, (req, res) => {
 router.get('/getReports', (req, res) => {
   const { reportID, requestID, description, status, brgyID } = req.query;
 
-  const verify = `SELECT * FROM assistancereport`;
+  const verify = `SELECT * FROM AssistanceReport`;
 
   connection.query(verify, [reportID, requestID, description, status, brgyID], (error, results) => {
     if (error) {
