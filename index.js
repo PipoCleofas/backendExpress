@@ -8,6 +8,8 @@ const port = 3000;
 
 app.use(bodyParser.json());
 app.use(cors());
+app.use(cors({ origin: 'https://adminweb-nine.vercel.app/login' }));
+
 
 
 const connection = mysql.createConnection({
